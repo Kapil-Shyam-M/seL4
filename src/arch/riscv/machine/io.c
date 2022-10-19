@@ -9,7 +9,6 @@
 #include <machine/io.h>
 #include <arch/sbi.h>
 
-#ifdef CONFIG_PRINTING
 void kernel_putDebugChar(unsigned char c)
 {
     /* Don't use any UART driver, but write to the SBI console. It depends on
@@ -20,12 +19,9 @@ void kernel_putDebugChar(unsigned char c)
      */
     sbi_console_putchar(c);
 }
-#endif /* CONFIG_PRINTING */
-
-#ifdef CONFIG_DEBUG_BUILD
 unsigned char kernel_getDebugChar(void)
 {
     /* Don't use UART, but read from the SBI console. */
     return sbi_console_getchar();
 }
-#endif /* CONFIG_DEBUG_BUILD */
+

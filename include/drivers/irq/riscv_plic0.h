@@ -11,7 +11,7 @@
 
 /* This is a check that prevents using this driver blindly. Extend the list if
  * this driver is confirmed to be working on other platforms. */
-#if !defined(CONFIG_PLAT_HIFIVE) && !defined(CONFIG_PLAT_POLARFIRE)
+#if !defined(CONFIG_PLAT_HIFIVE) && !defined(CONFIG_PLAT_SHAKTI) && !defined(CONFIG_PLAT_POLARFIRE)
 #error "This code supports the SiFive U54/U74 PLIC only."
 #endif
 
@@ -48,7 +48,7 @@
 
 #define PLIC_NUM_INTERRUPTS PLIC_MAX_IRQ
 
-#if defined(CONFIG_PLAT_HIFIVE) || defined(CONFIG_PLAT_POLARFIRE)
+#if defined(CONFIG_PLAT_HIFIVE) || defined(CONFIG_PLAT_POLARFIRE) || defined(CONFIG_PLAT_SHAKTI)
 
 /* SiFive U54-MC has 5 cores, and the first core does not
  * have supervisor mode. Therefore, we need to compensate
